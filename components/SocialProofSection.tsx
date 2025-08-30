@@ -2,15 +2,16 @@
 
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
+import Image from 'next/image'
 
 export default function SocialProofSection() {
   const universities = [
-    { name: 'IIT Bombay', logo: '🏛️' },
-    { name: 'IIT Delhi', logo: '🎓' },
-    { name: 'IIT Madras', logo: '⚡' },
-    { name: 'IIT Kanpur', logo: '🔬' },
-    { name: 'BITS Pilani', logo: '📚' },
-    { name: 'NIT Trichy', logo: '🏫' },
+    { name: 'IIT Bombay', logo: '/logos/IITBlogo.png' },
+    { name: 'IIT Delhi', logo: '/logos/IITDlogo.png' },
+    { name: 'IIT Madras', logo: '/logos/IITMlogo.png' },
+    { name: 'IIT Kanpur', logo: '/logos/IITKLogo.jpg' },
+    { name: 'BITS Pilani', logo: '/logos/BITSPilaniLogo.png' },
+    { name: 'NIT Trichy', logo: '/logos/NITTrichyLogo.png' },
   ]
 
   return (
@@ -48,7 +49,26 @@ export default function SocialProofSection() {
               viewport={{ once: true }}
               className="flex flex-col items-center space-y-3 p-6 bg-dark-800 rounded-xl border border-dark-700 hover:border-accent-500/30 transition-all duration-300 card-hover"
             >
-              <div className="text-4xl">{university.logo}</div>
+              <div className="relative w-16 h-16 flex items-center justify-center">
+                <Image
+                  src={university.logo}
+                  alt={`${university.name} logo`}
+                  width={64}
+                  height={64}
+                  className="object-contain"
+                  onError={(e) => {
+                    // Fallback to text if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                    const fallback = target.nextElementSibling as HTMLElement;
+                    if (fallback) fallback.style.display = 'block';
+                  }}
+                />
+                {/* Fallback text if image fails to load */}
+                <div className="text-2xl font-bold text-accent-400 hidden">
+                  {university.name.split(' ')[0]}
+                </div>
+              </div>
               <span className="text-white font-medium text-sm text-center">
                 {university.name}
               </span>

@@ -2,13 +2,14 @@
 
 import { motion } from 'framer-motion'
 import { Linkedin, Twitter, Github } from 'lucide-react'
+import Image from 'next/image'
 
 export default function TeamSection() {
   const team = [
     {
       name: 'Muhammad Peerzada',
       role: 'CEO',
-      image: '🧑‍💼',
+      image: '/founders-pics/muhammad.jpeg',
       bio: 'IIT Bombay Student, passionate about democratizing career opportunities for students.',
       linkedin: 'https://www.linkedin.com/in/muhammad-peerzada-b740a4284/',
       twitter: '#',
@@ -17,7 +18,7 @@ export default function TeamSection() {
     {
       name: 'Vineet Jaiswal',
       role: 'CTO',
-      image: '👩‍💻',
+      image: '/founders-pics/Vineet.png',
       bio: 'IIT Bombay Student, full-stack engineer with deep expertise in automation and AI systems, previously SDE Intern at Uncompromised',
       linkedin: 'https://www.linkedin.com/in/vineetjaiswal10/',
       twitter: '#',
@@ -26,7 +27,7 @@ export default function TeamSection() {
     {
       name: 'Rohan Dubey',
       role: 'CBO',
-      image: '👨‍🎨',
+      image: '/founders-pics/Rohan.jpeg',
       bio: 'IIT Bombay Student, Product strategist focused on user experience. Previously at EY-Parthenon and Multidimensions.',
       linkedin: 'https://www.linkedin.com/in/rohan-dubey-43ba16278/',
       twitter: '#',
@@ -35,7 +36,7 @@ export default function TeamSection() {
     {
       name: 'Dhruv Saraswat',
       role: 'Head of Machine Learning',
-      image: '👩‍💼',
+      image: '/founders-pics/dhruv.jpeg',
       bio: 'Machine Learning Engineer, Previously Data Science Intern at Nomura Research Institute',
       linkedin: 'https://www.linkedin.com/in/dhruv-saraswat-58486924a/',
       twitter: '#',
@@ -44,7 +45,7 @@ export default function TeamSection() {
     {
       name: 'Pratham Agarwal',
       role: 'Head of Engineering',
-      image: '👨‍🔬',
+      image: '/founders-pics/Pratham_Agarwal.jpeg',
       bio: 'IIT Bombay Student, Full Stack and Machine Learning Engineer, previously AI Engineer Intern at FINMECHANICS',
       linkedin: 'https://www.linkedin.com/in/pratham-agarwal-a15b9b256/',
       twitter: '#',
@@ -82,8 +83,25 @@ export default function TeamSection() {
             >
               {/* Avatar */}
               <div className="text-center mb-6">
-                <div className="w-24 h-24 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center mx-auto mb-4 text-4xl">
-                  {member.image}
+                <div className="relative w-24 h-24 mx-auto mb-4">
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} - ${member.role}`}
+                    width={96}
+                    height={96}
+                    className="rounded-full object-cover"
+                    onError={(e) => {
+                      // Fallback to gradient background with initials if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback gradient with initials if image fails to load */}
+                  <div className="w-24 h-24 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center text-white font-bold text-xl hidden">
+                    {member.name.split(' ').map(n => n[0]).join('')}
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
                 <p className="text-accent-400 font-medium">{member.role}</p>
