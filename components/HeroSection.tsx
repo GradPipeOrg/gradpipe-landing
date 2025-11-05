@@ -1,174 +1,159 @@
 'use client'
 
+// --- IMPORTS ---
 import { motion } from 'framer-motion'
-import { ArrowRight, Play, Zap } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { useState, useEffect } from 'react'
+
+// --- VISUALS ARRAY ---
+// durationMs should match one full loop of each GIF (approximate)
+const visuals = [
+  { src: '/showoff.gif', alt: "Animation of the GradPipe 'Showoff' AI Leaderboard for student talent", durationMs: 5700 },
+  { src: '/apex.gif', alt: "Animation of the 'Apex' AI Resume Generator by GradPipe", durationMs: 8000 },
+  { src: '/talent_dossier.png', alt: "Screenshot of a GradPipe 'Talent Dossier' for a pre-vetted student developer", durationMs: 4000 },
+]
 
 export default function HeroSection() {
-  // Add your actual URLs here
-  const demoUrl = "https://youtu.be/aJ-Wl_G4cPs" // Replace with your actual demo video URL
-  const productUrl = "https://app.gradpipe.com" // Replace with your actual product URL
+  const calendlyUrl = "https://calendly.com/muhammadiitb/30min"
+  const showoffUrl = "https://showoff-psi.vercel.app/"
+
+  // --- STATE FOR CAROUSEL ---
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // --- EFFECT FOR LOOPING (per-visual timing to allow each GIF to finish a loop) ---
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === visuals.length - 1 ? 0 : prevIndex + 1
+      )
+    }, visuals[currentIndex].durationMs)
+
+    return () => clearTimeout(timeout)
+  }, [currentIndex])
+
+  // --- ANIMATION LOGIC FUNCTION (MODIFIED) ---
+  const getVisualState = (index: number) => {
+    if (index === currentIndex) {
+      // --- ACTIVE (FRONT & VISIBLE) ---
+      return {
+        opacity: 1,
+        scale: 1,
+        rotateX: 0,
+        rotateZ: 0,
+        translateZ: 0, // At the front
+        y: 0,
+        zIndex: 2, // In front
+      }
+    } else {
+      // --- ALL OTHERS (BACK & INVISIBLE) ---
+      return {
+        opacity: 0, // Completely invisible
+        scale: 0.8, // Start smaller so it "grows"
+        rotateX: 10, // Keep some rotation for movement
+        rotateZ: 10,
+        translateZ: -150, // Start from the back
+        y: 40,
+        zIndex: 1, // Behind
+      }
+    }
+  }
 
   return (
-    <section className="gradient-bg min-h-screen flex items-center justify-center pt-16">
+    // Added overflow-hidden to the section to prevent scrollbars during animation
+    <section className="gradient-bg min-h-screen flex items-center justify-center pt-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Content */}
+          
+          {/* === LEFT COLUMN - CONTENT (Unchanged) === */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left z-10"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="inline-flex items-center space-x-2 bg-accent-500/10 border border-accent-500/20 rounded-full px-4 py-2 mb-6"
-            >
-              <Zap className="w-4 h-4 text-accent-400" />
-              <span className="text-accent-400 text-sm font-medium">
-                AI-Powered Job Outreach
-              </span>
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
-              Stop Wasting Time on{' '}
-              <span className="gradient-text">Cold Emails.</span>
-              <br />
-              Start Landing{' '}
-              <span className="gradient-text">Interviews.</span>
+              The talent marketplace where companies hire based on{' '}
+              <span className="gradient-text">proof, not pedigree.</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
               className="text-xl text-dark-300 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              GradPipe is your AI co-pilot that automates the entire job outreach workflow, 
-              from finding prospects to sending hyper-personalized emails.
+              We find the top 1% of "undiscovered" student talent. Our AI engine analyzes their <em className="text-white">real</em> skills and projects, not just the keywords on their resume.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              {/* Get Started Button - Links to your product */}
-              <a 
-                href={productUrl}
+              <a
+                href={calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary flex items-center justify-center space-x-2"
               >
-                <span>Get Started for Free</span>
+                <span>Book Your $150 Pilot</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
-              
-              {/* Watch Demo Button - Links to your demo video */}
-              <a 
-                href={demoUrl}
+              <a
+                href={showoffUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-secondary flex items-center justify-center space-x-2"
               >
-                <Play className="w-4 h-4" />
-                <span>Watch Demo</span>
+                <span>Get Discovered (It's Free)</span>
               </a>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="mt-8 flex items-center justify-center lg:justify-start space-x-6 text-sm text-dark-400"
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
-                <span>No credit card required</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
-                <span>Setup in 5 minutes</span>
-              </div>
             </motion.div>
           </motion.div>
 
-          {/* Right Column - Visual */}
+          {/* === RIGHT COLUMN - THE 3D ANIMATION === */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative w-full h-80 lg:h-96 perspective-container" // Using class from globals.css
+            style={{ transformStyle: 'preserve-3d' }}
           >
-            <div className="relative bg-dark-800 rounded-2xl p-8 border border-dark-700 shadow-2xl">
-              {/* Mock Dashboard */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-accent-500 rounded-full"></div>
-                    <span className="text-white font-medium">Campaign Dashboard</span>
-                  </div>
-                  <div className="text-accent-400 text-sm">Live</div>
-                </div>
-                
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-dark-700 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-white">47</div>
-                    <div className="text-dark-400 text-sm">Emails Sent</div>
-                  </div>
-                  <div className="bg-dark-700 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-accent-400">12</div>
-                    <div className="text-dark-400 text-sm">Replies</div>
-                  </div>
-                  <div className="bg-dark-700 rounded-lg p-4">
-                    <div className="text-2xl font-bold text-white">3</div>
-                    <div className="text-dark-400 text-sm">Interviews</div>
-                  </div>
-                </div>
-
-                <div className="bg-dark-700 rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-white font-medium">Recent Activity</span>
-                    <span className="text-accent-400 text-sm">2 min ago</span>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-accent-500 rounded-full"></div>
-                      <span className="text-dark-300 text-sm">Email sent to John Doe at Google</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                      <span className="text-dark-300 text-sm">Reply received from Sarah at Microsoft</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Elements */}
+            {/* We map over the visuals and apply the animated styles */}
+            {visuals.map((visual, index) => (
               <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 bg-accent-500 rounded-lg p-3 shadow-lg"
+                key={visual.src}
+                className="absolute w-full h-full"
+                // Apply the correct state (visible or invisible)
+                animate={getVisualState(index)}
+                // This spring transition creates the "magical" pop
+                transition={{
+                  type: 'spring',
+                  stiffness: 100,
+                  damping: 15,
+                  duration: 0.7
+                }}
               >
-                <Zap className="w-6 h-6 text-white" />
+                <div className="relative w-full h-full rounded-lg border border-dark-700/50 shadow-2xl shadow-purple-900/10 overflow-hidden">
+                  <Image
+                    src={visual.src}
+                    alt={visual.alt}
+                    fill
+                    className="object-contain" // Ensures full GIF is visible
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index === 0}
+                  />
+                </div>
               </motion.div>
-
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-4 -left-4 bg-primary-500 rounded-lg p-3 shadow-lg"
-              >
-                <Play className="w-6 h-6 text-white" />
-              </motion.div>
-            </div>
+            ))}
           </motion.div>
+
         </div>
       </div>
     </section>

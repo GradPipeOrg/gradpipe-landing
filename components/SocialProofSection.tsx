@@ -1,5 +1,6 @@
 'use client'
 
+<<<<<<< HEAD
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import Image from 'next/image'
@@ -14,24 +15,27 @@ export default function SocialProofSection() {
     { name: 'NIT Trichy', logo: '/logos/NITTrichyLogo.png' },
   ]
 
-  return (
-    <section className="py-20 bg-dark-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Trusted by Students from India's Top Institutions
-          </h2>
-          <p className="text-dark-300 text-lg max-w-2xl mx-auto">
-            Join thousands of ambitious students who are already using GradPipe to land their dream jobs
-          </p>
-        </motion.div>
+=======
+const logos = [
+  { name: 'IIT Bombay', src: '/IITBlogo.png' },
+  { name: 'IIT Delhi', src: '/IITDlogo.png' },
+  { name: 'IIT Madras', src: '/IITMlogo.png' },
+  { name: 'BITS Pilani', src: '/BITSPilaniLogo.png' },
+  { name: 'NIT Trichy', src: '/NITTrichyLogo.png' },
+  { name: 'IIT Kanpur', src: '/IITKLogo.jpg' },
+]
 
+export default function SocialProofSection() {
+  const allLogos = [...logos, ...logos]
+>>>>>>> a82df20 (feat(web): complete landing page refactor with new design, SEO, and GEO)
+  return (
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-center text-3xl sm:text-4xl font-extrabold mb-10">
+          <span className="gradient-text">Students from India's premier institutes</span> get hired on GradPipe
+        </h2>
+
+<<<<<<< HEAD
         {/* University Logos */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,68 +79,21 @@ export default function SocialProofSection() {
             </motion.div>
           ))}
         </motion.div>
+=======
+        <div className="w-full overflow-hidden relative rounded-2xl bg-dark-900/50 border border-dark-700/50 p-4">
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-dark-950 to-transparent z-10" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-dark-950 to-transparent z-10" />
+>>>>>>> a82df20 (feat(web): complete landing page refactor with new design, SEO, and GEO)
 
-        {/* Testimonial */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto"
-        >
-          <div className="bg-dark-800 rounded-2xl p-8 md:p-12 border border-dark-700 relative">
-            {/* Quote Icon */}
-            <div className="absolute -top-4 left-8">
-              <div className="bg-accent-500 rounded-full p-3">
-                <Quote className="w-6 h-6 text-white" />
+          <div className="flex animate-[scroll-x_12s_linear_infinite] md:animate-[scroll-x_20s_linear_infinite] lg:animate-[scroll-x_25s_linear_infinite] [will-change:transform]">
+            {allLogos.map((logo, index) => (
+              <div key={index} className="flex-shrink-0 w-64 sm:w-72 h-28 sm:h-24 mx-6 sm:mx-10 flex flex-col items-center justify-center transition-transform duration-300 hover:scale-105">
+                <img src={logo.src} alt={`${logo.name} Logo`} className="h-20 sm:h-16 object-contain drop-shadow-[0_0_10px_rgba(111,66,193,0.3)]" />
+                <span className="mt-2 text-xs text-dark-300 sm:hidden">{logo.name}</span>
               </div>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              {/* Testimonial Content */}
-              <div className="md:col-span-2">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                
-                <blockquote className="text-xl md:text-2xl text-white mb-6 leading-relaxed">
-                  "GradPipe saved me 20 hours a week and got me 3 interviews in my first campaign. 
-                  The AI writes emails that actually sound like me, and the results speak for themselves."
-                </blockquote>
-                
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">H</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-semibold">Harsh</div>
-                    <div className="text-dark-300 text-sm">Beta User • IIT Bombay</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="space-y-6">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent-400 mb-2">20hrs</div>
-                  <div className="text-dark-300 text-sm">Time saved per week</div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent-400 mb-2">3</div>
-                  <div className="text-dark-300 text-sm">Interviews landed</div>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-accent-400 mb-2">85%</div>
-                  <div className="text-dark-300 text-sm">Reply rate</div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

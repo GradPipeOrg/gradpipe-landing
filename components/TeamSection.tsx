@@ -9,13 +9,19 @@ export default function TeamSection() {
     {
       name: 'Muhammad Peerzada',
       role: 'CEO',
+<<<<<<< HEAD
       image: '/founders-pics/muhammad.jpeg',
       bio: 'IIT Bombay Student, passionate about democratizing career opportunities for students.',
+=======
+      imageSrc: '/muhammad.jpeg',
+      bio: "IIT Bombay Student, 2nd-time founder. I'm so convicted in this mission I've taken a semester off from IIT Bombay to build GradPipe full-time.",
+>>>>>>> a82df20 (feat(web): complete landing page refactor with new design, SEO, and GEO)
       linkedin: 'https://www.linkedin.com/in/muhammad-peerzada-b740a4284/',
       twitter: '#',
       github: 'https://github.com/INTERDICTOR1'
     },
     {
+<<<<<<< HEAD
       name: 'Vineet Jaiswal',
       role: 'CTO',
       image: '/founders-pics/Vineet.png',
@@ -46,6 +52,11 @@ export default function TeamSection() {
       name: 'Pratham Agarwal',
       role: 'Head of Engineering',
       image: '/founders-pics/Pratham_Agarwal.jpeg',
+=======
+      name: 'Pratham Agarwal',
+      role: 'CTO',
+      imageSrc: '/Pratham_Agarwal.jpeg',
+>>>>>>> a82df20 (feat(web): complete landing page refactor with new design, SEO, and GEO)
       bio: 'IIT Bombay Student, Full Stack and Machine Learning Engineer, previously AI Engineer Intern at FINMECHANICS',
       linkedin: 'https://www.linkedin.com/in/pratham-agarwal-a15b9b256/',
       twitter: '#',
@@ -64,14 +75,14 @@ export default function TeamSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Built by Students, for Students
+            Built by IIT Bombay Founders Who Lived the Problem
           </h2>
           <p className="text-dark-300 text-lg max-w-2xl mx-auto">
-            Meet the IIT Bombay students who are revolutionizing how students approach their careers
+            We believe talent is universally distributed, but opportunity is not.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {team.map((member, index) => (
             <motion.div
               key={index}
@@ -83,6 +94,7 @@ export default function TeamSection() {
             >
               {/* Avatar */}
               <div className="text-center mb-6">
+<<<<<<< HEAD
                 <div className="relative w-24 h-24 mx-auto mb-4">
                   <Image
                     src={member.image}
@@ -102,6 +114,16 @@ export default function TeamSection() {
                   <div className="w-24 h-24 bg-gradient-to-br from-accent-400 to-accent-600 rounded-full flex items-center justify-center text-white font-bold text-xl hidden">
                     {member.name.split(' ').map(n => n[0]).join('')}
                   </div>
+=======
+                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border border-dark-600 relative">
+                  <Image
+                    src={(member as any).imageSrc}
+                    alt={`${member.name} avatar`}
+                    fill
+                    className="object-cover"
+                    sizes="96px"
+                  />
+>>>>>>> a82df20 (feat(web): complete landing page refactor with new design, SEO, and GEO)
                 </div>
                 <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
                 <p className="text-accent-400 font-medium">{member.role}</p>
@@ -148,59 +170,23 @@ export default function TeamSection() {
           <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-3xl font-bold text-accent-400 mb-2">5</div>
-                <div className="text-dark-300 text-sm">IIT Bombay Students</div>
+                <div className="text-3xl font-bold text-accent-400 mb-2">300,000+</div>
+                <div className="text-dark-300 text-sm">Impressions</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-accent-400 mb-2">15+</div>
-                <div className="text-dark-300 text-sm">Years Combined Experience</div>
+                <div className="text-3xl font-bold text-accent-400 mb-2">1,000+</div>
+                <div className="text-dark-300 text-sm">Community Members</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-accent-400 mb-2">50+</div>
-                <div className="text-dark-300 text-sm">Companies Worked At</div>
+                <div className="text-3xl font-bold text-accent-400 mb-2">48</div>
+                <div className="text-dark-300 text-sm">Hours</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-accent-400 mb-2">1000+</div>
-                <div className="text-dark-300 text-sm">Students Helped</div>
+                <div className="text-3xl font-bold text-accent-400 mb-2">1</div>
+                <div className="text-dark-300 text-sm">Mission</div>
               </div>
             </div>
           </div>
-        </motion.div>
-
-        {/* Mission Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <div className="bg-gradient-to-r from-accent-500/10 to-primary-500/10 rounded-2xl p-8 border border-accent-500/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Our Mission
-            </h3>
-            <p className="text-dark-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              We believe every student deserves access to the same opportunities, regardless of their background. 
-              By automating the job outreach process, we're leveling the playing field and helping ambitious 
-              students land their dream careers.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <button className="btn-primary">
-            Join Our Team
-          </button>
-          <p className="text-dark-400 text-sm mt-4">
-            We're always looking for talented students to join our mission
-          </p>
         </motion.div>
       </div>
     </section>

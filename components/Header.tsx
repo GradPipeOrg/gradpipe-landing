@@ -10,7 +10,8 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   // Add your actual URLs here
-  const productUrl = "https://app.gradpipe.com" // Replace with your actual product URL
+  const discordUrl = "https://discord.gg/QFgPXTgG4x"
+  const calendlyUrl = "https://calendly.com/muhammadiitb/30min"
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +34,8 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-dark-900/95 backdrop-blur-md border-b border-dark-700 shadow-lg' 
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark-950/80 backdrop-blur-lg border-b border-white/10 ${
+        isScrolled ? 'shadow-lg' : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,16 +59,22 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             <button 
-              onClick={() => scrollToSection('features')}
+              onClick={() => scrollToSection('how-it-works')}
               className="text-dark-300 hover:text-white transition-colors duration-200"
             >
-              Features
+              How It Works
             </button>
             <button 
-              onClick={() => scrollToSection('pricing')}
+              onClick={() => scrollToSection('cta')}
               className="text-dark-300 hover:text-white transition-colors duration-200"
             >
-              Pricing
+              For Students
+            </button>
+            <button 
+              onClick={() => scrollToSection('cta')}
+              className="text-dark-300 hover:text-white transition-colors duration-200"
+            >
+              For Companies
             </button>
             <button 
               onClick={() => scrollToSection('team')}
@@ -78,12 +83,20 @@ export default function Header() {
               Team
             </button>
             <a 
-              href={productUrl}
+              href={"https://showoff-psi.vercel.app/"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+            >
+              Get Discovered
+            </a>
+            <a 
+              href={calendlyUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Get Started Free
+              Find Talent
             </a>
           </nav>
 
@@ -106,16 +119,22 @@ export default function Header() {
           >
             <div className="flex flex-col space-y-4">
               <button 
-                onClick={() => scrollToSection('features')}
+                onClick={() => scrollToSection('how-it-works')}
                 className="text-dark-300 hover:text-white transition-colors duration-200 text-left"
               >
-                Features
+                How It Works
               </button>
               <button 
-                onClick={() => scrollToSection('pricing')}
+                onClick={() => scrollToSection('cta')}
                 className="text-dark-300 hover:text-white transition-colors duration-200 text-left"
               >
-                Pricing
+                For Students
+              </button>
+              <button 
+                onClick={() => scrollToSection('cta')}
+                className="text-dark-300 hover:text-white transition-colors duration-200 text-left"
+              >
+                For Companies
               </button>
               <button 
                 onClick={() => scrollToSection('team')}
@@ -124,12 +143,20 @@ export default function Header() {
                 Team
               </button>
               <a 
-                href={productUrl}
+                href={discordUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary w-full"
+              >
+                Get Discovered
+              </a>
+              <a 
+                href={calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary w-full"
               >
-                Get Started Free
+                Find Talent
               </a>
             </div>
           </motion.div>

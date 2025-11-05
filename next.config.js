@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
-    domains: ['images.unsplash.com'],
+    // Disable optimization to avoid ResponseAborted errors for large GIFs/local assets
+    unoptimized: true,
   },
 }
 

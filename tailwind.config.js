@@ -1,3 +1,4 @@
+const { fontFamily } = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -47,12 +48,13 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Satoshi', ...fontFamily.sans],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'gradient': 'gradient 8s linear infinite',
+        'scroll-x': 'scroll-x 40s linear infinite',
       },
       keyframes: {
         float: {
@@ -69,6 +71,10 @@ module.exports = {
             'background-position': 'right center'
           },
         },
+        'scroll-x': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
       },
     },
   },

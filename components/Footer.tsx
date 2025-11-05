@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Linkedin, Twitter, Github, Mail, ArrowUp } from 'lucide-react'
+import { Linkedin, Instagram, Github, Mail, ArrowUp, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Footer() {
@@ -10,11 +10,19 @@ export default function Footer() {
   }
 
   // Add your actual URLs here
-  const productUrl = "https://app.gradpipe.com" // Replace with your actual product URL
+  const discordUrl = "https://discord.gg/QFgPXTgG4x"
+  const calendlyUrl = "https://calendly.com/muhammadiitb/30min"
   const linkedinUrl = "https://linkedin.com/company/gradpipe" // Replace with your LinkedIn URL
   const twitterUrl = "https://twitter.com/gradpipe" // Replace with your Twitter URL
   const githubUrl = "https://github.com/gradpipe" // Replace with your GitHub URL
   const emailUrl = "mailto:contact@gradpipe.com" // Replace with your email
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   return (
     <footer className="bg-dark-950 border-t border-dark-800">
@@ -34,8 +42,8 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">GradPipe</span>
             </div>
             <p className="text-dark-300 mb-6 max-w-md">
-              Stop wasting time on cold emails. Start landing interviews with AI-powered 
-              career outreach automation designed specifically for ambitious students.
+              The talent marketplace where companies hire based on proof, not pedigree. 
+              We find the top 1% of "undiscovered" student talent through verified skills and projects.
             </p>
             <div className="flex space-x-4">
               <a
@@ -46,13 +54,22 @@ export default function Footer() {
               >
                 <Linkedin className="w-5 h-5" />
               </a>
+              {/* Twitter removed */}
               <a
-                href={twitterUrl}
+                href="https://www.instagram.com/gradpipe/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
               >
-                <Twitter className="w-5 h-5" />
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href={discordUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
+              >
+                <MessageCircle className="w-5 h-5" />
               </a>
               <a
                 href={githubUrl}
@@ -76,29 +93,24 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Product</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#features" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Features
-                </a>
+                <button onClick={() => scrollToSection('how-it-works')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                  How It Works
+                </button>
               </li>
               <li>
-                <a href="#pricing" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Pricing
-                </a>
+                <button onClick={() => scrollToSection('cta')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                  For Students
+                </button>
               </li>
               <li>
-                <a href={productUrl} target="_blank" rel="noopener noreferrer" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  App
-                </a>
+                <button onClick={() => scrollToSection('cta')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                  For Companies
+                </button>
               </li>
               <li>
-                <a href="#" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  API
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Integrations
-                </a>
+                <button onClick={() => scrollToSection('team')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                  Team
+                </button>
               </li>
             </ul>
           </div>
@@ -108,24 +120,9 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#team" className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('team')} className="text-dark-300 hover:text-white transition-colors duration-200">
                   About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-dark-300 hover:text-white transition-colors duration-200">
-                  Support
-                </a>
+                </button>
               </li>
               <li>
                 <a href={emailUrl} className="text-dark-300 hover:text-white transition-colors duration-200">
@@ -135,6 +132,25 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+
+        {/* Final CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mt-12 mb-12"
+        >
+          <a
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex items-center space-x-2"
+          >
+            <span>Book Your $150 Pilot</span>
+            <ArrowUp className="w-4 h-4 rotate-[-90deg]" />
+          </a>
+        </motion.div>
 
         {/* Bottom Section */}
         <div className="border-t border-dark-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">

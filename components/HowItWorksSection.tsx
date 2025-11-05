@@ -1,32 +1,36 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Upload, Target, Rocket, ArrowRight } from 'lucide-react'
+import { Sparkles, Brain, Users, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 export default function HowItWorksSection() {
   const steps = [
     {
-      icon: Upload,
-      title: 'Upload Your Resume',
-      description: 'Our AI instantly understands your skills and experience.',
-      color: 'from-blue-500 to-blue-600'
+      icon: Sparkles,
+      title: 'We Attract the Top 1% with Free AI Tools.',
+      description: "It starts with our 'Career Co-pilot' suite. Tools like the **Apex Resume Generator** solve a real, painful problem for students, attracting thousands of ambitious users to our network.",
+      color: 'from-blue-500 to-blue-600',
+      visualPlaceholder: 'Placeholder for Apex Resume Generator GIF'
     },
     {
-      icon: Target,
-      title: 'Define Your Campaign',
-      description: 'Tell us your target roles and companies.',
-      color: 'from-purple-500 to-purple-600'
+      icon: Brain,
+      title: 'We Find the Signal with Our "Proof-of-Work" Engine.',
+      description: "Our new **AI Leaderboard** analyzes their resumes, GitHubs, and projects. It generates an objective 'Proof-of-Work' score, allowing us to find the *real* builders and hustlers.",
+      color: 'from-purple-500 to-purple-600',
+      visualPlaceholder: 'Placeholder for new AI Leaderboard MVP GIF'
     },
     {
-      icon: Rocket,
-      title: 'Launch & Track',
-      description: 'Our AI writes and sends dozens of personalized emails, and you track the replies.',
-      color: 'from-accent-500 to-accent-600'
+      icon: Users,
+      title: 'Companies Get Instant Access to Vetted Talent.',
+      description: "Hire faster and with more confidence. Our **'Concierge MVP'** gives you a curated 'Talent Dossier' of the top 3-5 pre-vetted candidates matched to your role.",
+      color: 'from-accent-500 to-accent-600',
+      visualPlaceholder: 'Placeholder for Talent Dossier PDF image'
     }
   ]
 
   return (
-    <section className="py-20 bg-dark-950">
+    <section id="how-it-works" className="py-20 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,11 +40,8 @@ export default function HowItWorksSection() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Your Career Outreach, Automated in 3 Simple Steps
+            Our 3-Step Flywheel: From Viral Tools to Vetted Talent
           </h2>
-          <p className="text-dark-300 text-lg max-w-2xl mx-auto">
-            Get started in minutes and see results in days, not months
-          </p>
         </motion.div>
 
         <div className="relative">
@@ -72,9 +73,53 @@ export default function HowItWorksSection() {
                   <h3 className="text-xl font-bold text-white mb-4">
                     {step.title}
                   </h3>
-                  <p className="text-dark-300 leading-relaxed">
-                    {step.description}
-                  </p>
+                  {index === 0 ? (
+                    <p className="text-dark-300 leading-relaxed mb-6">
+                      It starts with our 'Career Co-pilot' suite. Tools like the{' '}
+                      <a href="https://resume.gradpipe.com/" target="_blank" rel="noopener noreferrer" className="font-bold underline">
+                        Apex Resume Generator
+                      </a>{' '}
+                      solve a real, painful problem for students, attracting thousands of ambitious users to our network.
+                    </p>
+                  ) : (
+                    <p className="text-dark-300 leading-relaxed mb-6">
+                      {step.description.split('**').map((part, i) => 
+                        i % 2 === 1 ? <strong key={i} className="text-white">{part}</strong> : part
+                      )}
+                    </p>
+                  )}
+
+                  {/* Visuals */}
+                  <div className="w-full h-48 relative border border-dark-700 rounded-lg overflow-hidden mb-4 bg-dark-800">
+                    {index === 0 && (
+                      <Image
+                        src="/apex.gif"
+                        alt="Animation of the 'Apex' AI Resume Generator by GradPipe"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                        priority
+                      />
+                    )}
+                    {index === 1 && (
+                      <Image
+                        src="/showoff.gif"
+                        alt="Animation of the GradPipe 'Showoff' AI Leaderboard for student talent"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                      />
+                    )}
+                    {index === 2 && (
+                      <Image
+                        src="/talent_dossier.png"
+                        alt="Screenshot of a GradPipe 'Talent Dossier' for a pre-vetted student developer"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 800px"
+                      />
+                    )}
+                  </div>
 
                   {/* Arrow (except for last step) */}
                   {index < steps.length - 1 && (
@@ -92,80 +137,6 @@ export default function HowItWorksSection() {
             ))}
           </div>
         </div>
-
-        {/* Visual Process Flow */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-16"
-        >
-          <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700">
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Step 1 Visual */}
-              <div className="text-center">
-                <div className="bg-dark-700 rounded-lg p-6 mb-4">
-                  <Upload className="w-8 h-8 text-blue-400 mx-auto mb-3" />
-                  <div className="text-sm text-dark-300">Resume Upload</div>
-                </div>
-                <div className="text-xs text-dark-400">AI Analysis</div>
-              </div>
-
-              {/* Step 2 Visual */}
-              <div className="text-center">
-                <div className="bg-dark-700 rounded-lg p-6 mb-4">
-                  <Target className="w-8 h-8 text-purple-400 mx-auto mb-3" />
-                  <div className="text-sm text-dark-300">Campaign Setup</div>
-                </div>
-                <div className="text-xs text-dark-400">Target Definition</div>
-              </div>
-
-              {/* Step 3 Visual */}
-              <div className="text-center">
-                <div className="bg-dark-700 rounded-lg p-6 mb-4">
-                  <Rocket className="w-8 h-8 text-accent-400 mx-auto mb-3" />
-                  <div className="text-sm text-dark-300">Automated Outreach</div>
-                </div>
-                <div className="text-xs text-dark-400">Track Results</div>
-              </div>
-            </div>
-
-            {/* Progress Bar */}
-            <div className="mt-8">
-              <div className="flex items-center justify-between text-xs text-dark-400 mb-2">
-                <span>Upload</span>
-                <span>Configure</span>
-                <span>Launch</span>
-              </div>
-              <div className="w-full bg-dark-700 rounded-full h-2">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  transition={{ duration: 2, delay: 1 }}
-                  viewport={{ once: true }}
-                  className="bg-gradient-to-r from-blue-500 via-purple-500 to-accent-500 h-2 rounded-full"
-                />
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <button className="btn-primary">
-            Start Your First Campaign
-          </button>
-          <p className="text-dark-400 text-sm mt-4">
-            No setup fees • Cancel anytime • 14-day free trial
-          </p>
-        </motion.div>
       </div>
     </section>
   )
