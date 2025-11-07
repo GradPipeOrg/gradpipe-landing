@@ -13,8 +13,8 @@ export default function TeamSection() {
       imageSrc: '/muhammad.jpg',
       bio: "IIT Bombay Student, 2nd-time founder. I'm so convicted in this mission I've taken a semester off from IIT Bombay to build GradPipe full-time.",
       linkedin: 'https://www.linkedin.com/in/muhammad-peerzada-b740a4284/',
-      twitter: '#',
-      github: 'https://github.com/INTERDICTOR1'
+      twitter: 'https://x.com/Pz_Muhammad',
+      github: '#'
     },
     {
       name: 'Pratham Agarwal',
