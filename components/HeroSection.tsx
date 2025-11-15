@@ -69,13 +69,13 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
             className="text-center lg:text-left z-10"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.2 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
               The talent marketplace where companies hire based on{' '}
@@ -85,7 +85,7 @@ export default function HeroSection() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.4 }}
               className="text-xl text-dark-300 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
               We find the top 1% of "undiscovered" student talent. Our AI engine analyzes their <em className="text-white">real</em> skills and projects, not just the keywords on their resume.
@@ -94,7 +94,7 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
               <a
@@ -121,7 +121,7 @@ export default function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
             className="relative w-full h-80 lg:h-96 perspective-container" // Using class from globals.css
             style={{ transformStyle: 'preserve-3d' }}
           >
@@ -135,9 +135,9 @@ export default function HeroSection() {
                 // This spring transition creates the "magical" pop
                 transition={{
                   type: 'spring',
-                  stiffness: 100,
-                  damping: 15,
-                  duration: 0.7
+                  stiffness: 120,
+                  damping: 20,
+                  mass: 0.8
                 }}
               >
                 <div className="relative w-full h-full rounded-lg border border-white/10 shadow-2xl shadow-purple-900/10 overflow-hidden">
