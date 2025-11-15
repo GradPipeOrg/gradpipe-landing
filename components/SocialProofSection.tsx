@@ -12,13 +12,13 @@ const logos = [
 export default function SocialProofSection() {
   const allLogos = [...logos, ...logos]
   return (
-    <section className="py-20">
+    <section className="py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl sm:text-4xl font-extrabold mb-10">
           <span className="gradient-text">Students from India's premier institutes</span> get hired on GradPipe
         </h2>
 
-        <div className="w-full overflow-hidden relative rounded-2xl bg-dark-900/50 border border-dark-700/50 p-4">
+        <div className="w-full overflow-hidden relative rounded-2xl bg-dark-900/50 border border-white/10 p-4">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-dark-950 to-transparent z-10" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-dark-950 to-transparent z-10" />
 

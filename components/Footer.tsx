@@ -25,7 +25,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-dark-950 border-t border-dark-800">
+    <footer className="bg-dark-950 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -153,7 +153,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Bottom Section */}
-        <div className="border-t border-dark-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="text-dark-400 text-sm mb-4 md:mb-0">
             © 2025 GradPipe. All rights reserved.
           </div>

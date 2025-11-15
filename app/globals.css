@@ -4,14 +4,25 @@
 
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@1,900,700,500,300,400&display=swap');
 
+@keyframes rotate-glow {
+  0% { transform: rotate(0deg); opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { transform: rotate(360deg); opacity: 0.5; }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   
-  body {
+  body, .gradient-bg {
     font-family: 'Satoshi', sans-serif;
-    @apply bg-dark-950 text-dark-300;
+    background-color: #0F172A; /* Replaces slate-950/black */
+    background-image:
+      radial-gradient(at 15% 20%, hsla(212, 40%, 15%, 0.5) 0px, transparent 50%),
+      radial-gradient(at 85% 90%, hsla(280, 40%, 15%, 0.3) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, hsla(240, 30%, 10%, 0.4) 0px, transparent 60%);
+    color: #94a3b8; /* Set new default body text */
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -21,7 +32,7 @@
 
 @layer components {
   .gradient-bg {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    /* Background is now set in body above */
   }
   
   .gradient-text {
@@ -36,11 +47,24 @@
   }
   
   .btn-primary {
-    @apply bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl;
+    @apply bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(111, 66, 193, 0.2), 0 8px 10px -6px rgba(111, 66, 193, 0.2);
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-accent-500 text-accent-500 hover:bg-accent-500 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200;
+    @apply bg-transparent border-2 text-slate-100 font-semibold py-3 px-8 rounded-lg;
+    border-color: rgba(255, 255, 255, 0.1); /* Replaces slate-700/800 */
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -49,34 +73,63 @@
   -webkit-perspective: 1200px;
 }
 
-/* Glow Card Effect */
+/* Premium Animated Border Card Effect */
 .glow-card {
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
+  z-index: 1;
+  background-color: #0f172a; /* Card resting bg - slate-900 */
+  border-radius: 0.5rem; /* Match your card's radius - lg */
+  transition: all 0.3s ease-in-out;
 }
+
 .glow-card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(111, 66, 193, 0.2), transparent 40%);
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  pointer-events: none;
-  z-index: 0;
+  background-color: #0f172a; /* slate-900 */
+  background-image: conic-gradient(
+    transparent,
+    transparent,
+    #a855f7, /* purple-500 */
+    #3b82f6, /* blue-500 */
+    #a855f7, /* purple-500 */
+    transparent,
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 50% 50%;
+  animation: rotate-glow 4s linear infinite;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out;
 }
+
+.glow-card::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 2px; /* This is the "border" thickness */
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  background-color: #0f172a; /* Must match card bg - slate-900 */
+  border-radius: inherit; /* Inherit from parent */
+}
+
+.glow-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
 .glow-card:hover::before {
   opacity: 1;
-  animation: glow-spin 5s linear infinite;
 }
-@keyframes glow-spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
+
 .glow-card > * {
   position: relative;
   z-index: 1;

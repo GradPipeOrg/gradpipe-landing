@@ -30,7 +30,7 @@ export default function HowItWorksSection() {
   ]
 
   return (
-    <section id="how-it-works" className="py-20 bg-dark-900">
+    <section id="how-it-works" className="py-20 lg:py-24 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function HowItWorksSection() {
               >
                 <div className="text-center">
                   {/* Step Number */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-dark-800 border-2 border-dark-600 rounded-full text-white font-bold text-lg mb-6">
+                  <div className="inline-flex items-center justify-center w-12 h-12 bg-dark-800 border-2 border-white/10 rounded-full text-white font-bold text-lg mb-6">
                     {index + 1}
                   </div>
 
@@ -90,7 +90,7 @@ export default function HowItWorksSection() {
                   )}
 
                   {/* Visuals */}
-                  <div className="w-full h-48 relative border border-dark-700 rounded-lg overflow-hidden mb-4 bg-dark-800">
+                  <div className="w-full h-48 relative border border-white/10 rounded-lg overflow-hidden mb-4 bg-dark-800">
                     {index === 0 && (
                       <Image
                         src="/apex.gif"
