@@ -70,23 +70,42 @@ export default function HowItWorksSection() {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-4">
+                  <h3 className="text-xl font-bold text-white mb-3">
                     {step.title}
                   </h3>
                   {index === 0 ? (
-                    <p className="text-dark-300 leading-relaxed mb-6">
-                      It starts with our 'Career Co-pilot' suite. Tools like the{' '}
-                      <a href="https://resume.gradpipe.com/" target="_blank" rel="noopener noreferrer" className="font-bold underline">
-                        Apex Resume Generator
-                      </a>{' '}
-                      solve a real, painful problem for students, attracting thousands of ambitious users to our network.
-                    </p>
+                    <div className="mb-8 min-h-[80px]">
+                      <p className="text-slate-200 font-medium mb-3 text-sm">
+                        Free AI tools that attract thousands of ambitious builders.
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center text-xs text-slate-400">
+                        <span>• Attract top talent</span>
+                        <span>• Build network organically</span>
+                        <span>• Solve real problems</span>
+                      </div>
+                    </div>
+                  ) : index === 1 ? (
+                    <div className="mb-8 min-h-[80px]">
+                      <p className="text-slate-200 font-medium mb-3 text-sm">
+                        AI analyzes real work—not resume claims.
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center text-xs text-slate-400">
+                        <span>• Objective scoring</span>
+                        <span>• Proof-of-Work verified</span>
+                        <span>• Find real builders</span>
+                      </div>
+                    </div>
                   ) : (
-                    <p className="text-dark-300 leading-relaxed mb-6">
-                      {step.description.split('**').map((part, i) => 
-                        i % 2 === 1 ? <strong key={i} className="text-white">{part}</strong> : part
-                      )}
-                    </p>
+                    <div className="mb-8 min-h-[80px]">
+                      <p className="text-slate-200 font-medium mb-3 text-sm">
+                        Get 3-5 pre-vetted candidates in 48 hours.
+                      </p>
+                      <div className="flex flex-wrap gap-x-4 gap-y-2 justify-center text-xs text-slate-400">
+                        <span>• Curated matches</span>
+                        <span>• Pre-vetted talent</span>
+                        <span>• Instant access</span>
+                      </div>
+                    </div>
                   )}
 
                   {/* Visuals */}
