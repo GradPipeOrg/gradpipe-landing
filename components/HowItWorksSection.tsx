@@ -11,25 +11,49 @@ export default function HowItWorksSection() {
       title: 'We Attract the Top 1% with Free AI Tools.',
       description: "It starts with our 'Career Co-pilot' suite. Tools like the **Apex Resume Generator** solve a real, painful problem for students, attracting thousands of ambitious users to our network.",
       color: 'from-blue-500 to-blue-600',
-      visualPlaceholder: 'Placeholder for Apex Resume Generator GIF'
+      visualPlaceholder: 'Placeholder for Apex Resume Generator GIF',
+      url: "https://resume.gradpipe.com"
     },
     {
       icon: Brain,
       title: 'We Find the Signal with Our "Proof-of-Work" Engine.',
       description: "Our new **AI Leaderboard** analyzes their resumes, GitHubs, and projects. It generates an objective 'Proof-of-Work' score, allowing us to find the *real* builders and hustlers.",
       color: 'from-purple-500 to-purple-600',
-      visualPlaceholder: 'Placeholder for new AI Leaderboard MVP GIF'
+      visualPlaceholder: 'Placeholder for new AI Leaderboard MVP GIF',
+      url: "https://showoff-psi.vercel.app"
     },
     {
       icon: Users,
       title: 'Companies Get Instant Access to Vetted Talent.',
       description: "Hire faster and with more confidence. Our **'Concierge MVP'** gives you a curated 'Talent Dossier' of the top 3-5 pre-vetted candidates matched to your role.",
       color: 'from-accent-500 to-accent-600',
-      visualPlaceholder: 'Placeholder for Talent Dossier PDF image'
+      visualPlaceholder: 'Placeholder for Talent Dossier PDF image',
+      url: undefined
     }
   ]
 
+  // HowTo Schema
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How GradPipe Works: From Viral Tools to Vetted Talent",
+    description: "A 3-step process for companies to find and hire top student talent",
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.title,
+      text: step.description.replace(/\*\*/g, '').replace(/\*/g, ''),
+      ...(step.url && { url: step.url })
+    }))
+  }
+
   return (
+    <>
+      {/* HowTo Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
     <section id="how-it-works" className="py-20 lg:py-24 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -215,5 +239,6 @@ export default function HowItWorksSection() {
         </div>
       </div>
     </section>
+    </>
   )
 }
