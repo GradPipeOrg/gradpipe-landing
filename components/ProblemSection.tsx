@@ -5,7 +5,7 @@ import { Building, User } from 'lucide-react'
 
 export default function ProblemSection() {
   return (
-    <section id="problem" className="py-20 bg-dark-950">
+    <section id="problem" className="py-20 lg:py-24 bg-dark-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ export default function ProblemSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="glow-card bg-dark-900 border border-dark-700/50 rounded-2xl p-6"
+            className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl">
@@ -50,7 +50,7 @@ export default function ProblemSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="glow-card bg-dark-900 border border-dark-700/50 rounded-2xl p-6"
+            className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
             <div className="flex items-center gap-4 mb-6">
               <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl">

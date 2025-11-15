@@ -79,7 +79,7 @@ export default function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
               The talent marketplace where companies hire based on{' '}
-              <span className="gradient-text">proof, not pedigree.</span>
+              <span className="text-slate-100 font-medium">proof, not pedigree.</span>
             </motion.h1>
 
             <motion.p
@@ -140,7 +140,7 @@ export default function HeroSection() {
                   duration: 0.7
                 }}
               >
-                <div className="relative w-full h-full rounded-lg border border-dark-700/50 shadow-2xl shadow-purple-900/10 overflow-hidden">
+                <div className="relative w-full h-full rounded-lg border border-white/10 shadow-2xl shadow-purple-900/10 overflow-hidden">
                   <Image
                     src={visual.src}
                     alt={visual.alt}

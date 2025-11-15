@@ -115,7 +115,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 border-t border-dark-700"
+            className="md:hidden py-4 border-t border-white/10"
           >
             <div className="flex flex-col space-y-4">
               <button 

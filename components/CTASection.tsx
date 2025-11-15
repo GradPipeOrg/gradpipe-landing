@@ -8,7 +8,7 @@ export default function CTASection() {
   const calendlyUrl = "https://calendly.com/muhammadiitb/30min"
 
   return (
-    <section id="cta" className="py-20 bg-dark-950">
+    <section id="cta" className="py-20 lg:py-24 bg-dark-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="glow-card bg-dark-900 border border-dark-700/50 rounded-2xl p-6"
+            className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-accent-500 to-accent-600 rounded-xl mb-6">
               <User className="w-8 h-8 text-white" />
@@ -65,7 +65,7 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="glow-card bg-dark-900 border border-dark-700/50 rounded-2xl p-6"
+            className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl mb-6">
               <Building className="w-8 h-8 text-white" />

@@ -28,7 +28,7 @@ export default function TeamSection() {
   ]
 
   return (
-    <section id="team" className="py-20 bg-dark-900">
+    <section id="team" className="py-20 lg:py-24 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -53,11 +53,11 @@ export default function TeamSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-dark-800 rounded-2xl p-8 border border-dark-700 card-hover"
+              className="bg-dark-800 rounded-2xl p-8 border border-white/10 card-hover"
             >
               {/* Avatar */}
               <div className="text-center mb-6">
-                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border border-dark-600 relative">
+                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-4 border border-white/10 relative">
                   <Image
                     src={(member as any).imageSrc}
                     alt={`${member.name} avatar`}
@@ -108,7 +108,7 @@ export default function TeamSection() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <div className="bg-dark-800 rounded-2xl p-8 border border-dark-700">
+          <div className="bg-dark-800 rounded-2xl p-8 border border-white/10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-3xl font-bold text-accent-400 mb-2">300,000+</div>
