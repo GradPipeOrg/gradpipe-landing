@@ -35,13 +35,19 @@ export default function HowItWorksSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl font-bold text-white mb-4"
+          >
             Our 3-Step Flywheel: From Viral Tools to Vetted Talent
-          </h2>
+          </motion.h2>
         </motion.div>
 
         <div className="relative">
@@ -54,27 +60,54 @@ export default function HowItWorksSection() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                transition={{ type: "spring", stiffness: 100, damping: 15, delay: index * 0.15 }}
                 viewport={{ once: true }}
                 className="relative z-10"
               >
                 <div className="text-center">
                   {/* Step Number */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 bg-dark-800 border-2 border-white/10 rounded-full text-white font-bold text-lg mb-6">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15, delay: index * 0.15 + 0.1 }}
+                    viewport={{ once: true }}
+                    className="inline-flex items-center justify-center w-12 h-12 bg-dark-800 border-2 border-white/10 rounded-full text-white font-bold text-lg mb-6"
+                  >
                     {index + 1}
-                  </div>
+                  </motion.div>
 
-                  {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br ${step.color} rounded-2xl mb-6 shadow-lg`}>
-                    <step.icon className="w-10 h-10 text-white" />
-                  </div>
+                  {/* Icon with Premium Glow Effect */}
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 15, delay: index * 0.15 + 0.2 }}
+                    viewport={{ once: true }}
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    className={`inline-flex items-center justify-center w-20 h-20 icon-glow-well rounded-2xl mb-6 relative overflow-hidden`}
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-90`} />
+                    <step.icon className="w-10 h-10 text-white relative z-10 drop-shadow-lg" strokeWidth={2.5} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                  </motion.div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <motion.h3 
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 120, damping: 20, delay: index * 0.15 + 0.3 }}
+                    viewport={{ once: true }}
+                    className="text-xl font-bold text-white mb-3"
+                  >
                     {step.title}
-                  </h3>
+                  </motion.h3>
                   {index === 0 ? (
-                    <div className="mb-8 min-h-[80px]">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 20, delay: index * 0.15 + 0.4 }}
+                      viewport={{ once: true }}
+                      className="mb-8 min-h-[80px]"
+                    >
                       <p className="text-slate-200 font-medium mb-3 text-sm">
                         Free AI tools that attract thousands of ambitious builders.
                       </p>
@@ -83,9 +116,15 @@ export default function HowItWorksSection() {
                         <span>• Build network organically</span>
                         <span>• Solve real problems</span>
                       </div>
-                    </div>
+                    </motion.div>
                   ) : index === 1 ? (
-                    <div className="mb-8 min-h-[80px]">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 20, delay: index * 0.15 + 0.4 }}
+                      viewport={{ once: true }}
+                      className="mb-8 min-h-[80px]"
+                    >
                       <p className="text-slate-200 font-medium mb-3 text-sm">
                         AI analyzes real work—not resume claims.
                       </p>
@@ -94,9 +133,15 @@ export default function HowItWorksSection() {
                         <span>• Proof-of-Work verified</span>
                         <span>• Find real builders</span>
                       </div>
-                    </div>
+                    </motion.div>
                   ) : (
-                    <div className="mb-8 min-h-[80px]">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ type: "spring", stiffness: 120, damping: 20, delay: index * 0.15 + 0.4 }}
+                      viewport={{ once: true }}
+                      className="mb-8 min-h-[80px]"
+                    >
                       <p className="text-slate-200 font-medium mb-3 text-sm">
                         Get 3-5 pre-vetted candidates in 48 hours.
                       </p>
@@ -105,11 +150,17 @@ export default function HowItWorksSection() {
                         <span>• Pre-vetted talent</span>
                         <span>• Instant access</span>
                       </div>
-                    </div>
+                    </motion.div>
                   )}
 
                   {/* Visuals */}
-                  <div className="w-full h-48 relative border border-white/10 rounded-lg overflow-hidden mb-4 bg-dark-800">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: index * 0.15 + 0.5 }}
+                    viewport={{ once: true }}
+                    className="w-full h-48 relative border border-white/10 rounded-lg overflow-hidden mb-4 bg-dark-800"
+                  >
                     {index === 0 && (
                       <Image
                         src="/apex.gif"
@@ -138,14 +189,20 @@ export default function HowItWorksSection() {
                         sizes="(max-width: 768px) 100vw, 800px"
                       />
                     )}
-                  </div>
+                  </motion.div>
 
                   {/* Arrow (except for last step) */}
                   {index < steps.length - 1 && (
                     <div className="hidden lg:block mt-8">
                       <motion.div
                         animate={{ x: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        transition={{ 
+                          type: "spring",
+                          stiffness: 100,
+                          damping: 10,
+                          repeat: Infinity,
+                          duration: 2
+                        }}
                       >
                         <ArrowRight className="w-8 h-8 text-dark-400 mx-auto" />
                       </motion.div>

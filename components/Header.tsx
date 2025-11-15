@@ -33,9 +33,9 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark-950/80 backdrop-blur-lg border-b border-white/10 ${
-        isScrolled ? 'shadow-lg' : ''
+      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-dark-950/80 backdrop-blur-xl border-b border-white/10 ${
+        isScrolled ? 'shadow-lg bg-dark-950/95 backdrop-blur-2xl' : ''
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -41,7 +41,7 @@ export default function Footer() {
               />
               <span className="text-xl font-bold text-white">GradPipe</span>
             </div>
-            <p className="text-dark-300 mb-6 max-w-md">
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
               The talent marketplace where companies hire based on proof, not pedigree. 
               We find the top 1% of "undiscovered" student talent through verified skills and projects.
             </p>
@@ -90,25 +90,25 @@ export default function Footer() {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Product</h3>
+            <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Product</h3>
             <ul className="space-y-3">
               <li>
-                <button onClick={() => scrollToSection('how-it-works')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('how-it-works')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   How It Works
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('cta')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('cta')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   For Students
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('cta')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('cta')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   For Companies
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('team')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('team')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   Team
                 </button>
               </li>
@@ -117,15 +117,15 @@ export default function Footer() {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Company</h3>
+            <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Company</h3>
             <ul className="space-y-3">
               <li>
-                <button onClick={() => scrollToSection('team')} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <button onClick={() => scrollToSection('team')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   About
                 </button>
               </li>
               <li>
-                <a href={emailUrl} className="text-dark-300 hover:text-white transition-colors duration-200">
+                <a href={emailUrl} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
                   Contact
                 </a>
               </li>
@@ -137,7 +137,7 @@ export default function Footer() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
           viewport={{ once: true }}
           className="text-center mt-12 mb-12"
         >
@@ -154,18 +154,18 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-dark-400 text-sm mb-4 md:mb-0">
+          <div className="text-slate-500 text-xs mb-4 md:mb-0">
             © 2025 GradPipe. All rights reserved.
           </div>
           
-          <div className="flex items-center space-x-6 text-sm">
-            <a href="#" className="text-dark-400 hover:text-white transition-colors duration-200">
+          <div className="flex items-center space-x-6 text-xs">
+            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
               Privacy Policy
             </a>
-            <a href="#" className="text-dark-400 hover:text-white transition-colors duration-200">
+            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
               Terms of Service
             </a>
-            <a href="#" className="text-dark-400 hover:text-white transition-colors duration-200">
+            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
               Cookie Policy
             </a>
           </div>

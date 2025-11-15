@@ -1,7 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { User, Building, ArrowRight } from 'lucide-react'
+import { useState } from 'react'
 
 export default function CTASection() {
   const discordUrl = "https://discord.gg/QFgPXTgG4x"
@@ -13,21 +14,27 @@ export default function CTASection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 120, damping: 20, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl font-bold text-white mb-4"
+          >
             The Future of Hiring is Here. Pick Your Path.
-          </h2>
+          </motion.h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* Box 1 - For Students */}
-          <motion.div
+          <TiltCard
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
             viewport={{ once: true }}
             className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
@@ -57,13 +64,13 @@ export default function CTASection() {
               <span>Get Discovered on Showoff</span>
               <ArrowRight className="w-4 h-4" />
             </a>
-          </motion.div>
+          </TiltCard>
 
           {/* Box 2 - For Companies */}
-          <motion.div
+          <TiltCard
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
             viewport={{ once: true }}
             className="glow-card bg-dark-900 border border-white/10 rounded-2xl p-6"
           >
@@ -85,10 +92,58 @@ export default function CTASection() {
               <span>Book Your $150 Pilot Call</span>
               <ArrowRight className="w-4 h-4" />
             </a>
-          </motion.div>
+          </TiltCard>
         </div>
       </div>
     </section>
+  )
+}
+
+// Tilt Card Component with Mouse Interaction
+function TiltCard({ children, className, ...props }: any) {
+  const [isHovered, setIsHovered] = useState(false)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  
+  const mouseXSpring = useSpring(x, { stiffness: 500, damping: 100 })
+  const mouseYSpring = useSpring(y, { stiffness: 500, damping: 100 })
+  
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["2.5deg", "-2.5deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-2.5deg", "2.5deg"])
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const xPct = mouseX / width - 0.5
+    const yPct = mouseY / height - 0.5
+    x.set(xPct)
+    y.set(yPct)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+    setIsHovered(false)
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className={className}
+      {...props}
+    >
+      {children}
+    </motion.div>
   )
 }
 
