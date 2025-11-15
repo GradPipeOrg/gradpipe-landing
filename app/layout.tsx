@@ -46,7 +46,7 @@ export default function RootLayout({
               logo: "https://gradpipe.com/logo.jpg",
               description:
                 "GradPipe is an AI-powered talent marketplace that helps companies hire the top 1% of 'undiscovered' student talent based on their verified skills and projects.",
-              foundingDate: "2024",
+              foundingDate: "2025",
               founders: [
                 {
                   "@type": "Person",
