@@ -14,7 +14,8 @@ export default function TeamSection() {
       bio: "IIT Bombay Student, 2nd-time founder. I'm so convicted in this mission I've taken a semester off from IIT Bombay to build GradPipe full-time.",
       linkedin: 'https://www.linkedin.com/in/muhammad-peerzada-b740a4284/',
       twitter: 'https://x.com/Pz_Muhammad',
-      github: '#'
+      github: '#',
+      alumniOf: 'Indian Institute of Technology Bombay'
     },
     {
       name: 'Pratham Agarwal',
@@ -23,11 +24,42 @@ export default function TeamSection() {
       bio: 'IIT Bombay Student, Full Stack and Machine Learning Engineer, previously AI Engineer Intern at FINMECHANICS',
       linkedin: 'https://www.linkedin.com/in/pratham-agarwal-a15b9b256/',
       twitter: '#',
-      github: '#'
+      github: '#',
+      alumniOf: 'Indian Institute of Technology Bombay'
     }
   ]
 
+  // Person Schema for Team Members
+  const personSchemas = team.map(member => ({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    worksFor: {
+      "@type": "Organization",
+      name: "GradPipe"
+    },
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: member.alumniOf
+    },
+    sameAs: [
+      member.linkedin !== '#' ? member.linkedin : undefined,
+      member.twitter !== '#' ? member.twitter : undefined,
+    ].filter(Boolean),
+    description: member.bio
+  }))
+
   return (
+    <>
+      {/* Person Schemas */}
+      {personSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
     <section id="team" className="py-20 lg:py-24 bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -131,5 +163,6 @@ export default function TeamSection() {
         </motion.div>
       </div>
     </section>
+    </>
   )
 }

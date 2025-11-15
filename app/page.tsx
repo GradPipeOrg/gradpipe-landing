@@ -4,7 +4,25 @@ import { FadeIn } from '@/components/ui/FadeIn'
 export const metadata: Metadata = {
   title: "GradPipe | The Talent Marketplace for Proof, Not Pedigree",
   description:
-    "We're an AI-powered marketplace that helps companies hire the top 1% of 'undiscovered' student talent based on their verified skills and projects.",
+    "GradPipe is an AI-powered talent marketplace that helps companies hire the top 1% of 'undiscovered' student talent. We verify skills through our Proof-of-Work engine, not just resume keywords. Students from IIT, BITS, and NIT get discovered by top startups. Companies get curated Talent Dossiers with pre-vetted candidates. Free for students. $150 pilot for companies.",
+  keywords: [
+    'talent marketplace',
+    'student hiring',
+    'AI recruitment',
+    'verified skills',
+    'proof of work',
+    'student talent',
+    'IIT students',
+    'BITS students',
+    'startup hiring',
+    'talent discovery',
+    'resume verification',
+    'skills verification',
+    'undiscovered talent',
+    'talent dossier',
+    'Apex resume generator',
+    'Showoff leaderboard'
+  ],
   openGraph: {
     title: "GradPipe | The Talent Marketplace for Proof, Not Pedigree",
     description:
@@ -47,6 +65,7 @@ import HiringCompaniesSection from '@/components/HiringCompaniesSection'
 import ProblemSection from '@/components/ProblemSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
 import CTASection from '@/components/CTASection'
+import FAQSection from '@/components/FAQSection'
 import TeamSection from '@/components/TeamSection'
 import Footer from '@/components/Footer'
 
@@ -69,6 +88,9 @@ export default function Home() {
       </FadeIn>
       <FadeIn>
         <CTASection />
+      </FadeIn>
+      <FadeIn>
+        <FAQSection />
       </FadeIn>
       <FadeIn>
         <TeamSection />
