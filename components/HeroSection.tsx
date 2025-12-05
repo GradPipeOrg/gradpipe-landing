@@ -9,9 +9,9 @@ import { useState, useEffect, useRef } from 'react'
 // --- VISUALS ARRAY ---
 // durationMs should match one full loop of each GIF (approximate)
 const visuals = [
-  { src: '/showoff.gif', alt: "Animation of the GradPipe 'Showoff' AI Leaderboard for student talent", durationMs: 5700 },
-  { src: '/apex.gif', alt: "Animation of the 'Apex' AI Resume Generator by GradPipe", durationMs: 8000 },
+  { src: '/showoff.gif', alt: "Animation of the GradPipe 'Showoff' AI Leaderboard for student talent", durationMs: 6000 },
   { src: '/talent_dossier.png', alt: "Screenshot of a GradPipe 'Talent Dossier' for a pre-vetted student developer", durationMs: 4000 },
+  { src: '/apex.gif', alt: "Animation of the 'Apex' AI Resume Generator by GradPipe", durationMs: 4000 }
 ]
 
 export default function HeroSection() {
