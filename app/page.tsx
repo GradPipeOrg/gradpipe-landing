@@ -61,7 +61,6 @@ export const metadata: Metadata = {
 import Header from '@/components/Header'
 import HeroSection from '@/components/HeroSection'
 import SocialProofSection from '@/components/SocialProofSection'
-import HiringCompaniesSection from '@/components/HiringCompaniesSection'
 import ProblemSection from '@/components/ProblemSection'
 import HowItWorksSection from '@/components/HowItWorksSection'
 import CTASection from '@/components/CTASection'
@@ -76,9 +75,6 @@ export default function Home() {
       <HeroSection />
       <FadeIn>
         <SocialProofSection />
-      </FadeIn>
-      <FadeIn>
-        <HiringCompaniesSection />
       </FadeIn>
       <FadeIn>
         <ProblemSection />

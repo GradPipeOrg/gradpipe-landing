@@ -11,7 +11,7 @@ export default function Footer() {
 
   // Add your actual URLs here
   const discordUrl = "https://discord.gg/QFgPXTgG4x"
-  const calendlyUrl = "https://calendly.com/muhammadiitb/30min"
+  const calendlyUrl = "https://showoff.gradpipe.com/recruiters"
   const linkedinUrl = "https://linkedin.com/company/gradpipe" // Replace with your LinkedIn URL
   const twitterUrl = "https://twitter.com/gradpipe" // Replace with your Twitter URL
   const githubUrl = "https://github.com/gradpipe" // Replace with your GitHub URL
@@ -42,7 +42,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">GradPipe</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
-              The talent marketplace where companies hire based on proof, not pedigree. 
+              The talent marketplace where companies hire based on proof, not pedigree.
               We find the top 1% of "undiscovered" student talent through verified skills and projects.
             </p>
             <div className="flex space-x-4">
@@ -157,7 +157,7 @@ export default function Footer() {
           <div className="text-slate-500 text-xs mb-4 md:mb-0">
             © 2025 GradPipe. All rights reserved.
           </div>
-          
+
           <div className="flex items-center space-x-6 text-xs">
             <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
               Privacy Policy
