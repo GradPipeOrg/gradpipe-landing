@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Linkedin, Instagram, Github, Mail, ArrowUp, MessageCircle } from 'lucide-react'
+import { Linkedin, Instagram, Github, Mail, ArrowUp, MessageCircle, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Footer() {
@@ -12,10 +12,10 @@ export default function Footer() {
   // Add your actual URLs here
   const discordUrl = "https://discord.gg/QFgPXTgG4x"
   const calendlyUrl = "https://showoff.gradpipe.com/recruiters"
-  const linkedinUrl = "https://linkedin.com/company/gradpipe" // Replace with your LinkedIn URL
-  const twitterUrl = "https://twitter.com/gradpipe" // Replace with your Twitter URL
-  const githubUrl = "https://github.com/gradpipe" // Replace with your GitHub URL
-  const emailUrl = "mailto:contact@gradpipe.com" // Replace with your email
+  const linkedinUrl = "https://linkedin.com/company/gradpipe"
+  const twitterUrl = "https://twitter.com/gradpipe"
+  const githubUrl = "https://github.com/gradpipe"
+  const emailUrl = "mailto:contact@gradpipe.com"
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -25,147 +25,134 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-dark-950 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              {/* Use your logo image */}
+    <footer className="bg-dark-950 border-t border-white/5 relative overflow-hidden pt-32 pb-12">
+      {/* Massive Background Logo */}
+      <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-full select-none pointer-events-none overflow-hidden flex justify-center">
+        <h1 className="text-[15vw] font-black text-white/[0.02] tracking-tighter whitespace-nowrap leading-none">
+          GRADPIPE
+        </h1>
+      </div>
+
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid md:grid-cols-12 gap-12 mb-24">
+          {/* Company Info - Spans 5 columns */}
+          <div className="md:col-span-5 space-y-8">
+            <div className="flex items-center space-x-3">
               <Image
-                src="/logo.jpg" // Your logo file in the public folder
+                src="/logo.jpg"
                 alt="GradPipe Logo"
-                width={40}
-                height={40}
-                className="rounded-lg"
+                width={48}
+                height={48}
+                className="rounded-xl shadow-lg shadow-indigo-500/10"
               />
-              <span className="text-xl font-bold text-white">GradPipe</span>
+              <span className="text-2xl font-black text-white tracking-tight">GradPipe</span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-md">
+            <p className="text-text-muted text-lg leading-relaxed max-w-md">
               The talent marketplace where companies hire based on proof, not pedigree.
-              We find the top 1% of "undiscovered" student talent through verified skills and projects.
+              We find the top 1% of "undiscovered" student talent.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href={linkedinUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              {/* Twitter removed */}
-              <a
-                href="https://www.instagram.com/gradpipe/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href={discordUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
-              >
-                <MessageCircle className="w-5 h-5" />
-              </a>
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href={emailUrl}
-                className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
+            <div className="flex gap-3">
+              {[
+                { icon: Linkedin, url: linkedinUrl },
+                { icon: Instagram, url: "https://www.instagram.com/gradpipe/" },
+                { icon: MessageCircle, url: discordUrl },
+                { icon: Github, url: githubUrl },
+                { icon: Mail, url: emailUrl },
+              ].map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-text-muted hover:text-white hover:bg-white/10 hover:scale-110 transition-all duration-300 border border-white/5"
+                >
+                  <item.icon className="w-5 h-5 transition-transform group-hover:-translate-y-0.5" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Product Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Product</h3>
-            <ul className="space-y-3">
-              <li>
-                <button onClick={() => scrollToSection('how-it-works')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  How It Works
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('cta')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  For Students
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('cta')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  For Companies
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('team')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  Team
-                </button>
-              </li>
-            </ul>
-          </div>
+          {/* Links - Spans 7 columns */}
+          <div className="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-white font-bold mb-8 text-sm uppercase tracking-wider">Product</h3>
+              <ul className="space-y-4">
+                <li>
+                  <button onClick={() => scrollToSection('how-it-works')} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">How It Works</span>
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('cta')} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">For Students</span>
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('cta')} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">For Companies</span>
+                  </button>
+                </li>
+                <li>
+                  <button onClick={() => scrollToSection('team')} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">Team</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
 
-          {/* Company Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <button onClick={() => scrollToSection('team')} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  About
-                </button>
-              </li>
-              <li>
-                <a href={emailUrl} className="text-slate-400 hover:text-white transition-colors duration-200 text-sm">
-                  Contact
-                </a>
-              </li>
-            </ul>
+            <div>
+              <h3 className="text-white font-bold mb-8 text-sm uppercase tracking-wider">Company</h3>
+              <ul className="space-y-4">
+                <li>
+                  <button onClick={() => scrollToSection('team')} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">About</span>
+                  </button>
+                </li>
+                <li>
+                  <a href={emailUrl} className="group flex items-center text-text-muted hover:text-white transition-colors duration-200">
+                    <ArrowRight className="w-4 h-4 mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <span className="group-hover:translate-x-1 transition-transform duration-200">Contact</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="col-span-2 sm:col-span-1">
+              <h3 className="text-white font-bold mb-8 text-sm uppercase tracking-wider">Ready?</h3>
+              <a
+                href={calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary inline-flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-bold"
+              >
+                Book Pilot
+              </a>
+            </div>
           </div>
         </div>
 
-        {/* Final CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 15 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 mb-12"
-        >
-          <a
-            href={calendlyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center space-x-2"
-          >
-            <span>Book Your $150 Pilot</span>
-            <ArrowUp className="w-4 h-4 rotate-[-90deg]" />
-          </a>
-        </motion.div>
-
         {/* Bottom Section */}
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="text-slate-500 text-xs mb-4 md:mb-0">
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-text-subtle text-sm">
             © 2025 GradPipe. All rights reserved.
           </div>
 
-          <div className="flex items-center space-x-6 text-xs">
-            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+          <div className="flex items-center space-x-8 text-sm">
+            <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
               Privacy Policy
             </a>
-            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+            <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
               Terms of Service
             </a>
-            <a href="#" className="text-slate-500 hover:text-slate-300 transition-colors duration-200">
+            <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
               Cookie Policy
             </a>
           </div>
@@ -175,7 +162,7 @@ export default function Footer() {
             onClick={scrollToTop}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="w-10 h-10 bg-dark-800 rounded-lg flex items-center justify-center text-dark-300 hover:text-white hover:bg-dark-700 transition-all duration-200"
+            className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-text-muted hover:text-white hover:bg-white/10 border border-white/5 transition-all duration-200 shadow-lg shadow-black/20"
           >
             <ArrowUp className="w-5 h-5" />
           </motion.button>
