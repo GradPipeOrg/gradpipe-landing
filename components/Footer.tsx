@@ -59,7 +59,7 @@ export default function Footer() {
                 { icon: Linkedin, url: linkedinUrl },
                 { icon: Instagram, url: "https://www.instagram.com/gradpipe/" },
                 { icon: MessageCircle, url: discordUrl },
-                { icon: Github, url: githubUrl },
+
                 { icon: Mail, url: emailUrl },
               ].map((item, idx) => (
                 <a
@@ -146,10 +146,10 @@ export default function Footer() {
           </div>
 
           <div className="flex items-center space-x-8 text-sm">
-            <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
+            <a href="/privacy" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
               Privacy Policy
             </a>
-            <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
+            <a href="/terms" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
               Terms of Service
             </a>
             <a href="#" className="text-text-subtle hover:text-text-muted transition-colors duration-200">
